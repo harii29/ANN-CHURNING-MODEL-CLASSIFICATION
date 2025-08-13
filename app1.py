@@ -1,14 +1,15 @@
 
 import numpy as np
 import pandas as pd
-from tensorflow.keras.models import load_model
+import keras
+from keras.models import load_model
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder,StandardScaler
 import pickle
 import streamlit as st
 
 #Load ann model
-model = load_model('my_model.h5',compile=False)
+model = keras.models.load_model("my_model.h5")
 
 #load encoder and scaler
 with open('le.pkl','rb') as file:
@@ -82,6 +83,7 @@ if prediction_proba > 0.5:
     st.write('The customer is likely to churn.')
 else:
     st.write('The customer is not likely to churn.')
+
 
 
 
